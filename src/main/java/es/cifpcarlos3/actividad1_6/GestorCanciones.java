@@ -71,6 +71,7 @@ public class GestorCanciones {
         try (var writer = Files.newBufferedWriter(json, StandardCharsets.UTF_8)) {
             var mapper = JsonMapper.builder().enable(SerializationFeature.INDENT_OUTPUT).enable(SerializationFeature.WRAP_ROOT_VALUE).build();
             mapper.writeValue(writer, canciones);
+            writer = mapper.writerWithDefaultPrettyPrinter(); // comenta
         }
 
         System.out.println("Leídas: " + lineasLeidas + " | Válidas: " + lineasValidas + " | Ignoradas: " + lineasIgnoradas);
